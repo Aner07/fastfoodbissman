@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bissman — El Mejor Kebab de Barakaldo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mystyles/mystyles.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Bissman</a>
+
+  <ul class="nav-links">
+    <li><a href="#menu" data-i18n="nav_menu">Menú</a></li>
+    <li><a href="#locales" data-i18n="nav_find">Encuéntranos</a></li>
+    <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
+    <div class="lang-btn">
+      <button onclick="setLang('es')" id="btn-es" class="active">ES</button>
+      <button onclick="setLang('en')" id="btn-en">EN</button>
+      <button onclick="setLang('fr')" id="btn-fr">FR</button>
+    </div>
+  </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- DRAWER OVERLAY -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleMenu()"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#menu" onclick="toggleMenu()" data-i18n="nav_menu">Menú</a>
+  <a href="#locales" onclick="toggleMenu()" data-i18n="nav_find">Encuéntranos</a>
+  <a href="#contacto" onclick="toggleMenu()" data-i18n="nav_contact">Contacto</a>
+  <div class="mobile-lang">
+    <button onclick="setLang('es'); toggleMenu();" id="mbtn-es" class="active">ES</button>
+    <button onclick="setLang('en'); toggleMenu();" id="mbtn-en">EN</button>
+    <button onclick="setLang('fr'); toggleMenu();" id="mbtn-fr">FR</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-i18n="hero_eyebrow">Barakaldo · Sondika</p>
+    <h1 class="hero-title" data-i18n-html="hero_title">EL MEJOR<br><span>KEBAB</span><br>DE BARAKALDO</h1>
+    <a href="https://wa.me/34600000000" class="cta-btn" target="_blank" rel="noopener" data-i18n="hero_cta">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.078.533 4.023 1.473 5.713L.057 23.09a.7.7 0 0 0 .852.851l5.376-1.413A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.83 9.83 0 0 1-5.014-1.374l-.36-.214-3.189.838.851-3.108-.234-.378A9.813 9.813 0 0 1 2.182 12c0-5.424 4.394-9.818 9.818-9.818 5.423 0 9.818 4.394 9.818 9.818 0 5.424-4.395 9.818-9.818 9.818z"/></svg>
+      <span data-i18n="hero_cta_text">Pide Aquí</span>
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="container">
+    <span class="section-label" data-i18n="menu_label">Lo que servimos</span>
+    <h2 class="section-title" data-i18n="menu_title">NUESTRO MENÚ</h2>
+    <p class="section-desc" data-i18n="menu_desc">Cocina turca tradicional con ingredientes frescos cada día. Hay algo para todos.</p>
+
+    <div class="menu-tabs" id="menu-tabs">
+      <button class="tab-btn active" data-cat="menus" data-i18n="cat_menus">Menús</button>
+      <button class="tab-btn" data-cat="kebabs" data-i18n="cat_kebabs">Kebabs</button>
+      <button class="tab-btn" data-cat="raciones" data-i18n="cat_raciones">Raciones</button>
+      <button class="tab-btn" data-cat="pizzas" data-i18n="cat_pizzas">Pizza Turca</button>
+      <button class="tab-btn" data-cat="pollo" data-i18n="cat_pollo">Pollo</button>
+      <button class="tab-btn" data-cat="ensaladas" data-i18n="cat_ensaladas">Ensaladas</button>
+      <button class="tab-btn" data-cat="platos" data-i18n="cat_platos">Platos</button>
+    </div>
+
+    <div class="menu-grid" id="menu-grid"></div>
+  </div>
+</section>
+
+<!-- LOCALES -->
+<section id="locales">
+  <div class="container">
+    <span class="section-label" data-i18n="loc_label">Dónde estamos</span>
+    <h2 class="section-title" data-i18n="loc_title">NUESTROS LOCALES</h2>
+    <p class="section-desc" data-i18n="loc_desc">Dos locales para atenderte. Ven a visitarnos o pide por WhatsApp.</p>
+
+    <div class="locales-grid">
+      <!-- Barakaldo -->
+      <div class="locale-card">
+        <iframe
+          class="locale-map"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=43.288456,-2.9932763&z=17&output=embed">
+        </iframe>
+        <div class="locale-info">
+          <div class="locale-name" data-i18n="loc_bk_name">BARAKALDO</div>
+          <p class="locale-address" data-i18n="loc_bk_addr">Ronda de Azkue 36<br>48902 Barakaldo, Bizkaia</p>
+          <a href="https://www.google.com/maps/place/Keba+Spot/@43.2885104,-2.9927494,100m/data=!3m1!1e3!4m6!3m5!1s0xd4e51e9d6085a83:0x22264ef5ab7c5b47!8m2!3d43.288456!4d-2.9932763!16s%2Fg%2F11s82x7fg5" class="locale-link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-i18n="loc_open_maps">Ver en Maps</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Sondika -->
+      <div class="locale-card">
+        <iframe
+          class="locale-map"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=43.2977685,-2.926374&z=17&output=embed">
+        </iframe>
+        <div class="locale-info">
+          <div class="locale-name" data-i18n="loc_sk_name">SONDIKA</div>
+          <p class="locale-address" data-i18n="loc_sk_addr">Sondika Fast Food<br>Sondika, Bizkaia</p>
+          <a href="https://www.google.com/maps/place/Sondika+Fast+Food/@43.297528,-2.9267831,112m/data=!3m1!1e3!4m15!1m8!3m7!1s0xd4e455b1705724d:0x55d8c25f3f62a3e1!2sSondika,+Vizcaya!3b1!8m2!3d43.2871618!4d-2.9325785!16zL20vMDg5dzFu!3m5!1s0xd4e450002554cef:0x221d3f28f3fda904!8m2!3d43.2977685!4d-2.926374!16s%2Fg%2F11ydzm6y5t" class="locale-link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-i18n="loc_open_maps">Ver en Maps</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <span class="section-label" data-i18n="ct_label">Hablemos</span>
+    <h2 class="section-title" data-i18n="ct_title">CONTACTO</h2>
+    <p class="section-desc" data-i18n="ct_desc">¿Quieres hacer un pedido grande, un evento o tienes alguna pregunta? Escríbenos directamente por WhatsApp y te respondemos enseguida.</p>
+    <a href="https://wa.me/34600000000" class="wa-btn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.078.533 4.023 1.473 5.713L.057 23.09a.7.7 0 0 0 .852.851l5.376-1.413A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.83 9.83 0 0 1-5.014-1.374l-.36-.214-3.189.838.851-3.108-.234-.378A9.813 9.813 0 0 1 2.182 12c0-5.424 4.394-9.818 9.818-9.818 5.423 0 9.818 4.394 9.818 9.818 0 5.424-4.395 9.818-9.818 9.818z"/></svg>
+      <span data-i18n="ct_wa_btn">Escríbenos por WhatsApp</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="social-links">
+    <a href="https://instagram.com/TU_USUARIO" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+    </a>
+    <a href="https://twitter.com/TU_USUARIO" target="_blank" rel="noopener" aria-label="Twitter / X">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    </a>
+    <a href="https://tiktok.com/@TU_USUARIO" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+      </svg>
+    </a>
+  </div>
+  <p>© 2025 <span>Bissman</span> · Barakaldo &amp; Sondika · Todos los derechos reservados</p>
+</footer>
+
+
+<script>
+// ─── TRANSLATIONS ───────────────────────────────────────────────────────────
+const T = {
+  es: {
+    nav_menu: "Menú", nav_find: "Encuéntranos", nav_contact: "Contacto",
+    hero_eyebrow: "Barakaldo · Sondika",
+    hero_title: 'EL MEJOR<br><span>KEBAB</span><br>DE BARAKALDO',
+    hero_sub: "Sabor turco auténtico, ingredientes frescos, tradición en cada bocado.",
+    hero_cta_text: "Pide Aquí",
+    menu_label: "Lo que servimos", menu_title: "NUESTRO MENÚ",
+    menu_desc: "Cocina turca tradicional con ingredientes frescos cada día. Hay algo para todos.",
+    cat_menus:"Menús", cat_kebabs:"Kebabs", cat_raciones:"Raciones",
+    cat_pizzas:"Pizza Turca", cat_pollo:"Pollo", cat_ensaladas:"Ensaladas", cat_platos:"Platos",
+    loc_label:"Dónde estamos", loc_title:"NUESTROS LOCALES",
+    loc_desc:"Dos locales para atenderte. Ven a visitarnos o pide por WhatsApp.",
+    loc_bk_name:"BARAKALDO", loc_bk_addr:"Ronda de Azkue 36<br>48902 Barakaldo, Bizkaia",
+    loc_sk_name:"SONDIKA", loc_sk_addr:"Sondika Fast Food<br>Sondika, Bizkaia",
+    loc_open_maps:"Ver en Maps",
+    ct_label:"Hablemos", ct_title:"CONTACTO",
+    ct_desc:"¿Quieres hacer un pedido grande, un evento o tienes alguna pregunta? Escríbenos directamente por WhatsApp y te respondemos enseguida.",
+    ct_wa_btn:"Escríbenos por WhatsApp",
+  },
+  en: {
+    nav_menu: "Menu", nav_find: "Find Us", nav_contact: "Contact",
+    hero_eyebrow: "Barakaldo · Sondika",
+    hero_title: 'THE BEST<br><span>KEBAB</span><br>IN BARAKALDO',
+    hero_sub: "Authentic Turkish flavour, fresh ingredients, tradition in every bite.",
+    hero_cta_text: "Order Here",
+    menu_label: "What we serve", menu_title: "OUR MENU",
+    menu_desc: "Traditional Turkish cooking with fresh ingredients every day. Something for everyone.",
+    cat_menus:"Meal Deals", cat_kebabs:"Kebabs", cat_raciones:"Sides",
+    cat_pizzas:"Turkish Pizza", cat_pollo:"Chicken", cat_ensaladas:"Salads", cat_platos:"Plates",
+    loc_label:"Where we are", loc_title:"OUR LOCATIONS",
+    loc_desc:"Two locations ready to serve you. Come visit us or order via WhatsApp.",
+    loc_bk_name:"BARAKALDO", loc_bk_addr:"Ronda de Azkue 36<br>48902 Barakaldo, Bizkaia",
+    loc_sk_name:"SONDIKA", loc_sk_addr:"Sondika Fast Food<br>Sondika, Bizkaia",
+    loc_open_maps:"Open in Maps",
+    ct_label:"Get in touch", ct_title:"CONTACT",
+    ct_desc:"Want to place a large order, organise an event or have a question? Message us on WhatsApp and we'll get back to you right away.",
+    ct_wa_btn:"Message us on WhatsApp",
+  },
+  fr: {
+    nav_menu: "Menu", nav_find: "Nous trouver", nav_contact: "Contact",
+    hero_eyebrow: "Barakaldo · Sondika",
+    hero_title: 'LE MEILLEUR<br><span>KEBAB</span><br>DE BARAKALDO',
+    hero_sub: "Saveur turque authentique, ingrédients frais, tradition à chaque bouchée.",
+    hero_cta_text: "Commander",
+    menu_label: "Ce que nous servons", menu_title: "NOTRE MENU",
+    menu_desc: "Cuisine turque traditionnelle avec des ingrédients frais chaque jour. Quelque chose pour tout le monde.",
+    cat_menus:"Menus", cat_kebabs:"Kebabs", cat_raciones:"Accompagnements",
+    cat_pizzas:"Pizza Turque", cat_pollo:"Poulet", cat_ensaladas:"Salades", cat_platos:"Plats",
+    loc_label:"Où nous sommes", loc_title:"NOS RESTAURANTS",
+    loc_desc:"Deux restaurants prêts à vous servir. Venez nous rendre visite ou commandez via WhatsApp.",
+    loc_bk_name:"BARAKALDO", loc_bk_addr:"Ronda de Azkue 36<br>48902 Barakaldo, Bizkaia",
+    loc_sk_name:"SONDIKA", loc_sk_addr:"Sondika Fast Food<br>Sondika, Bizkaia",
+    loc_open_maps:"Voir sur Maps",
+    ct_label:"Contactez-nous", ct_title:"CONTACT",
+    ct_desc:"Vous voulez passer une grande commande, organiser un événement ou vous avez une question ? Écrivez-nous directement sur WhatsApp.",
+    ct_wa_btn:"Écrivez-nous sur WhatsApp",
+  }
+};
+
+// ─── MENU DATA ────────────────────────────────────────────────────────────────
+const MENU = {
+  menus: [
+    {name:"Menú Peques", desc:"Nuggets/alitas/fingers + refresco/zumo/agua + postre helado", price:"5,99€"},
+    {name:"Menú de Kebab", desc:"1 Kebab, patatas, refresco y helado", price:"7,50€"},
+    {name:"Menú Durum", desc:"1 Durum, patatas fritas, refresco y helado", price:"8,00€"},
+    {name:"Menú Pizza", desc:"1 Pizza, patatas fritas, refresco y helado", price:"8,50€"},
+    {name:"Menú Pedrata Pequeña", desc:"Refresco, pan y helado", price:"6,00€"},
+    {name:"Menú Pedrata Grande", desc:"Refresco, pan y helado", price:"8,50€"},
+    {name:"Menú 2", desc:"2 Kebab + 1 Shuwarma + 1 Durum + 2 Patatas", price:"17,50€"},
+    {name:"Menú 3", desc:"2 kebab + 2 patatas + 2 refrescos + 2 helados", price:"14,50€"},
+    {name:"Menú 5 Familiar", desc:"2 kebab + 2 durum + 3 patatas + 4 refrescos", price:"26,00€"},
+    {name:"Menú 67 Fast Food", desc:"1 Durum + 1 Kebab + 1 nuggets + 2 refrescos", price:"13,50€"},
+    {name:"Menú 1 BoomBoom", desc:"2 kebabs, 2 shuwarmas, 2 patatas y 2 refrescos", price:"18,50€"},
+    {name:"Menú 4 Combo", desc:"3 alitas + 1 patatas + 3 nuggets", price:"5,99€"},
+  ],
+  kebabs: [
+    {name:"Kebab de Cordero / Pollo / Pavo", desc:"Pan crujiente turco, lechuga, tomate, cebolla y salsas", price:"4,50€"},
+    {name:"Kebab con Queso", desc:"Cordero, pollo o pavo + queso feta + verduras y salsas", price:"5,00€"},
+    {name:"Kebab Solo Carne", desc:"Carne en pan turco con salsas y patatas fritas dentro", price:"5,50€"},
+    {name:"Kebab Solo Carne Premium", desc:"Pollo o pavo cordero, patatas fritas dentro y salsas", price:"6,50€"},
+    {name:"Kebab con Queso (carne especial)", desc:"Pan turco, patatas dentro, queso y salsas", price:"5,50€"},
+    {name:"Kebab Vegetal con Falafel", desc:"Puré de garbanzo frito, lechuga, tomate, cebolla y salsas", price:"4,50€"},
+  ],
+  raciones: [
+    {name:"Patatas Fritas", desc:"", price:"2,50€"},
+    {name:"Patatas Bravas", desc:"", price:"3,50€"},
+    {name:"Patatas Ali-Oli", desc:"", price:"3,50€"},
+    {name:"Aros de Cebolla", desc:"", price:"4,00€"},
+    {name:"Nuggets", desc:"", price:"4,00€"},
+    {name:"Nuggets con Patatas", desc:"", price:"4,50€"},
+    {name:"Alitas de Pollo (6 ud.)", desc:"", price:"4,00€"},
+    {name:"Alitas de Pollo (12 ud.) con patatas", desc:"", price:"7,50€"},
+    {name:"Fingers de Pollo", desc:"", price:"4,00€"},
+    {name:"Fingers con Cheddar", desc:"", price:"4,00€"},
+    {name:"Pop Corn de Pollo (12 ud.)", desc:"", price:"3,50€"},
+    {name:"Falafel con Patatas", desc:"", price:"4,00€"},
+    {name:"Salchipapas", desc:"Salchipapas con patatas", price:"4,50€"},
+    {name:"Samosa", desc:"", price:"4,00€"},
+    {name:"Saek Kebab", desc:"", price:"4,00€"},
+    {name:"Bandidos", desc:"Pollo crujiente", price:"4,00€"},
+    {name:"Crispy Burguer", desc:"", price:"3,00€"},
+    {name:"Croquetas de Pollo", desc:"", price:"4,00€"},
+    {name:"Croquetas de Bacalao", desc:"", price:"3,00€"},
+    {name:"Croquetas de Carne", desc:"", price:"3,50€"},
+    {name:"Croquetas de Boletus", desc:"", price:"3,80€"},
+    {name:"Croquetas de Cocido", desc:"", price:"4,00€"},
+    {name:"Fingers de Mozzarella", desc:"", price:"3,50€"},
+    {name:"Mini Empanadillas", desc:"", price:"3,50€"},
+    {name:"Huevo Bechamel", desc:"", price:"4,00€"},
+  ],
+  pizzas: [
+    {name:"Pizza Turca de Cordero / Pollo / Pavo", desc:"Pizza lahmacum enrollada, ensalada y salsas turcas", price:"6,00€"},
+    {name:"Pizza Turca con Queso", desc:"Cordero, pollo o pavo con queso", price:"6,50€"},
+    {name:"Pizza Turca Solo Carne", desc:"Máxima cantidad de carne", price:"7,00€"},
+    {name:"Pizza Vegetal", desc:"", price:"4,50€"},
+    {name:"Pizza Falafel", desc:"", price:"5,50€"},
+  ],
+  pollo: [
+    {name:"½ Pollo Asado", desc:"", price:"5,50€"},
+    {name:"½ Pollo Asado con Patatas", desc:"", price:"6,50€"},
+    {name:"½ Pollo Asado con Patatas y Ensalada", desc:"", price:"8,50€"},
+    {name:"Pollo Asado Entero", desc:"", price:"8,50€"},
+    {name:"Pollo Asado Entero con Patatas", desc:"", price:"10,00€"},
+    {name:"Pollo Asado Entero con Patatas y Ensalada", desc:"", price:"12,00€"},
+    {name:"½ Pollo Frito", desc:"", price:"5,50€"},
+    {name:"½ Pollo Frito con Patatas", desc:"", price:"6,50€"},
+    {name:"½ Pollo Frito con Patatas y Ensalada", desc:"", price:"8,50€"},
+    {name:"Pollo Frito Entero", desc:"", price:"8,50€"},
+    {name:"Pollo Frito Entero con Patatas / Bravas", desc:"", price:"10,00€"},
+    {name:"Pollo Frito Entero con Patatas y Ensalada", desc:"", price:"11,00€"},
+    {name:"½ Pollo Broaster", desc:"Estilo frito crujiente", price:"5,50€"},
+    {name:"½ Pollo Broaster con Patatas", desc:"", price:"6,50€"},
+    {name:"½ Pollo Broaster con Patatas y Ensalada", desc:"", price:"8,50€"},
+    {name:"Pollo Broaster Entero", desc:"", price:"8,50€"},
+    {name:"Pollo Broaster Entero con Patatas / Bravas", desc:"", price:"10,00€"},
+    {name:"Pollo Broaster Entero con Patatas y Ensalada", desc:"", price:"11,00€"},
+    {name:"Pedrata Pequeña", desc:"Cordero, pollo o mixta", price:"4,00€"},
+    {name:"Pedrata Grande", desc:"Cordero, pollo o mixta", price:"6,00€"},
+  ],
+  ensaladas: [
+    {name:"Ensalada Mixta", desc:"Lechuga, tomate, cebolla, bonito, espárragos, huevo y aceitunas", price:"5,00€"},
+    {name:"Ensalada India", desc:"Lechuga, patata, maíz, zanahoria y piña", price:"5,00€"},
+    {name:"Ensalada Campera", desc:"Manzana, lechuga, queso, maíz y zanahoria", price:"5,00€"},
+    {name:"Ensalada Turca", desc:"Lechuga, pavo, queso y aceitunas", price:"4,00€"},
+    {name:"Ensalada Tropical", desc:"Piña, maíz, lechuga, zanahoria y melocotón", price:"4,00€"},
+  ],
+  platos: [
+    {name:"Cordero o Pollo con Ensalada y Arroz", desc:"", price:"7,50€"},
+    {name:"Mixto con Ensalada, Patatas y Arroz", desc:"", price:"7,50€"},
+    {name:"Cordero o Pollo con Patatas y Ensalada", desc:"", price:"7,00€"},
+    {name:"Sheek Kebab con Arroz y Patatas", desc:"", price:"7,00€"},
+    {name:"Falafel con Ensalada, Patatas y Arroz", desc:"", price:"7,00€"},
+  ],
+};
+
+// ─── RENDER MENU ─────────────────────────────────────────────────────────────
+let currentCat = 'menus';
+
+function renderMenu(cat) {
+  const grid = document.getElementById('menu-grid');
+  const items = MENU[cat] || [];
+  grid.innerHTML = items.map(item => `
+    <div class="menu-item">
+      <div>
+        <div class="menu-item-name">${item.name}</div>
+        ${item.desc ? `<div class="menu-item-desc">${item.desc}</div>` : ''}
+      </div>
+      <div class="menu-price">${item.price}</div>
+    </div>
+  `).join('');
+}
+
+document.getElementById('menu-tabs').addEventListener('click', e => {
+  const btn = e.target.closest('.tab-btn');
+  if (!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCat = btn.dataset.cat;
+  renderMenu(currentCat);
+});
+
+renderMenu(currentCat);
+
+// ─── I18N ─────────────────────────────────────────────────────────────────────
+let lang = 'es';
+
+function setLang(l) {
+  lang = l;
+  const t = T[l];
+
+  // Update text nodes
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+
+  // Update innerHTML nodes (hero title with span)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Update addresses (with <br>)
+  document.querySelectorAll('[data-i18n="loc_bk_addr"]').forEach(el => { el.innerHTML = t['loc_bk_addr']; });
+  document.querySelectorAll('[data-i18n="loc_sk_addr"]').forEach(el => { el.innerHTML = t['loc_sk_addr']; });
+
+  // Active lang buttons
+  ['es','en','fr'].forEach(code => {
+    const b = document.getElementById('btn-' + code);
+    const mb = document.getElementById('mbtn-' + code);
+    if (b) b.classList.toggle('active', code === l);
+    if (mb) mb.classList.toggle('active', code === l);
+  });
+}
+
+// ─── MOBILE MENU ─────────────────────────────────────────────────────────────
+function toggleMenu() {
+  const menu    = document.getElementById('mobile-menu');
+  const ham     = document.getElementById('hamburger');
+  const overlay = document.getElementById('drawer-overlay');
+  const isOpen  = menu.classList.toggle('open');
+  ham.classList.toggle('open', isOpen);
+  overlay.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+// Close mobile menu on resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('drawer-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+</script>
+</body>
+</html>
