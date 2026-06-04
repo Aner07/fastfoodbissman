@@ -198,7 +198,7 @@
     inset: 0;
     background: 
       linear-gradient(to bottom, rgba(26,18,8,0.55) 0%, rgba(26,18,8,0.4) 50%, rgba(26,18,8,0.75) 100%),
-      url('https://images.unsplash.com/photo-1561651188-d207bbec4ec3?w=1800&q=80&auto=format&fit=crop') center/cover no-repeat;
+      url('../assets/4271.webp') center/cover no-repeat;
   }
 
   .hero-content {
